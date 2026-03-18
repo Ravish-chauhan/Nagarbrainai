@@ -67,37 +67,39 @@ export default function HeroSection() {
 
           {/* CTA Buttons */}
           <div style={{ display: "flex", alignItems: "center", gap: "20px", flexWrap: "wrap" }}>
-            <button
-              style={{
-                padding: "18px 40px",
-                borderRadius: "32px",
-                border: "none",
-                cursor: "pointer",
-                background: "linear-gradient(135deg, #1b5e20, #2e7d32)",
-                color: "#fff",
-                fontSize: "18px",
-                fontWeight: 600,
-                display: "flex",
-                alignItems: "center",
-                gap: "10px",
-                boxShadow: "0 6px 20px rgba(27, 94, 32, 0.3)",
-                transition: "all 0.25s ease",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = "translateY(-2px)";
-                e.currentTarget.style.boxShadow = "0 10px 30px rgba(27, 94, 32, 0.4)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.boxShadow = "0 6px 20px rgba(27, 94, 32, 0.3)";
-              }}
-            >
-              Discover Our Solutions
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="7" y1="17" x2="17" y2="7" />
-                <polyline points="7 7 17 7 17 17" />
-              </svg>
-            </button>
+            <a href="http://localhost:5173" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
+              <button
+                style={{
+                  padding: "18px 40px",
+                  borderRadius: "32px",
+                  border: "none",
+                  cursor: "pointer",
+                  background: "linear-gradient(135deg, #1b5e20, #2e7d32)",
+                  color: "#fff",
+                  fontSize: "18px",
+                  fontWeight: 600,
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "10px",
+                  boxShadow: "0 6px 20px rgba(27, 94, 32, 0.3)",
+                  transition: "all 0.25s ease",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "translateY(-2px)";
+                  e.currentTarget.style.boxShadow = "0 10px 30px rgba(27, 94, 32, 0.4)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "0 6px 20px rgba(27, 94, 32, 0.3)";
+                }}
+              >
+                Discover Our Solutions
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="7" y1="17" x2="17" y2="7" />
+                  <polyline points="7 7 17 7 17 17" />
+                </svg>
+              </button>
+            </a>
 
             <button
               style={{

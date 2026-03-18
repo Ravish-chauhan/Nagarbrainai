@@ -171,31 +171,33 @@ export default function Navbar() {
 
       {/* Desktop: View Dashboard Button */}
       {!isMobile && (
-        <button
-          style={{
-            padding: "14px 32px",
-            borderRadius: "28px",
-            border: "none",
-            cursor: "pointer",
-            background: "linear-gradient(135deg, #1b5e20, #2e7d32)",
-            color: "#ffffff",
-            fontSize: "16px",
-            fontWeight: 600,
-            display: "flex",
-            alignItems: "center",
-            gap: "8px",
-            boxShadow: "0 4px 14px rgba(27, 94, 32, 0.3)",
-            transition: "all 0.2s ease",
-          }}
-          onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "0 6px 20px rgba(27, 94, 32, 0.45)"; e.currentTarget.style.transform = "translateY(-1px)"; }}
-          onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "0 4px 14px rgba(27, 94, 32, 0.3)"; e.currentTarget.style.transform = "translateY(0)"; }}
-        >
-          View Dashboard
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12" />
-            <polyline points="12 5 19 12 12 19" />
-          </svg>
-        </button>
+        <a href="http://localhost:5173" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
+          <button
+            style={{
+              padding: "14px 32px",
+              borderRadius: "28px",
+              border: "none",
+              cursor: "pointer",
+              background: "linear-gradient(135deg, #1b5e20, #2e7d32)",
+              color: "#ffffff",
+              fontSize: "16px",
+              fontWeight: 600,
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              boxShadow: "0 4px 14px rgba(27, 94, 32, 0.3)",
+              transition: "all 0.2s ease",
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "0 6px 20px rgba(27, 94, 32, 0.45)"; e.currentTarget.style.transform = "translateY(-1px)"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "0 4px 14px rgba(27, 94, 32, 0.3)"; e.currentTarget.style.transform = "translateY(0)"; }}
+          >
+            View Dashboard
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </button>
+        </a>
       )}
 
       {/* Mobile: Hamburger Button */}
@@ -335,32 +337,33 @@ export default function Navbar() {
             })}
 
             {/* Mobile: View Dashboard Button */}
-            <button
-              onClick={() => setMenuOpen(false)}
-              style={{
-                marginTop: "12px",
-                width: "100%",
-                padding: "14px",
-                borderRadius: "12px",
-                border: "none",
-                cursor: "pointer",
-                background: "linear-gradient(135deg, #1b5e20, #2e7d32)",
-                color: "#ffffff",
-                fontSize: "16px",
-                fontWeight: 600,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "8px",
-                boxShadow: "0 4px 14px rgba(27, 94, 32, 0.3)",
-              }}
-            >
-              View Dashboard
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12" />
-                <polyline points="12 5 19 12 12 19" />
-              </svg>
-            </button>
+            <a href="http://localhost:5173" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none", display: "block", marginTop: "12px" }}>
+              <button
+                onClick={() => setMenuOpen(false)}
+                style={{
+                  width: "100%",
+                  padding: "14px",
+                  borderRadius: "12px",
+                  border: "none",
+                  cursor: "pointer",
+                  background: "linear-gradient(135deg, #1b5e20, #2e7d32)",
+                  color: "#ffffff",
+                  fontSize: "16px",
+                  fontWeight: 600,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "8px",
+                  boxShadow: "0 4px 14px rgba(27, 94, 32, 0.3)",
+                }}
+              >
+                View Dashboard
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </button>
+            </a>
           </div>
         </div>
       )}

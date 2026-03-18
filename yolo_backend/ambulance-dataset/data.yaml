@@ -1,0 +1,7 @@
+path: E:/Project/NagarBrain/yolo_backend/ambulance-dataset
+train: train/images
+val: valid/images
+test: test/images
+
+nc: 2
+names: ['ambulance', 'siren']
