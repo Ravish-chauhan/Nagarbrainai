@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { Brain, User, Siren } from 'lucide-react';
+import { Brain, User, Siren, AlertTriangle } from 'lucide-react';
 
 const RoleSelect = () => {
   const navigate = useNavigate();
@@ -42,6 +42,19 @@ const RoleSelect = () => {
             <div className="role-option-text">
               <span className="role-option-title">Ambulance Admin</span>
               <span className="role-option-desc">Manage requests, dispatch ambulances, view routes</span>
+            </div>
+            <div className="role-option-arrow">→</div>
+          </button>
+
+          {/* Incident Admin */}
+          <button className="role-option" onClick={() => navigate('/incident-admin')}
+            style={{ borderColor: '#ef4444', background: 'linear-gradient(135deg,#fef2f2,#fff)' }}>
+            <div className="role-option-icon" style={{ background: 'linear-gradient(135deg,#ef4444,#dc2626)' }}>
+              <AlertTriangle size={32} />
+            </div>
+            <div className="role-option-text">
+              <span className="role-option-title">Incident Admin</span>
+              <span className="role-option-desc">Review, verify and remove map incidents</span>
             </div>
             <div className="role-option-arrow">→</div>
           </button>

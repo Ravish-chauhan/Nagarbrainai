@@ -5,6 +5,7 @@ import RoleSelect         from './pages/RoleSelect';
 import UserDashboard      from './pages/UserDashboard';
 import AmbulanceDashboard from './pages/AmbulanceDashboard';
 import TrafficSignalPage  from './pages/TrafficSignalPage';
+import IncidentAdminPanel from './pages/IncidentAdminPanel';
 
 const GOOGLE_LIBRARIES = ['places'];
 
@@ -24,11 +25,12 @@ function App() {
     >
       <Router>
         <Routes>
-          <Route path="/"           element={<HomePage />} />
-          <Route path="/dashboard"   element={<RoleSelect />} />
-          <Route path="/user"        element={<UserDashboard />} />
-          <Route path="/admin"       element={<AmbulanceDashboard />} />
-          <Route path="/signals"     element={<TrafficSignalPage />} />
+          <Route path="/"                  element={<HomePage />} />
+          <Route path="/dashboard"          element={<RoleSelect />} />
+          <Route path="/user"               element={<UserDashboard />} />
+          <Route path="/admin"              element={<AmbulanceDashboard />} />
+          <Route path="/signals"            element={<TrafficSignalPage />} />
+          <Route path="/incident-admin"     element={<IncidentAdminPanel />} />
         </Routes>
       </Router>
     </LoadScript>

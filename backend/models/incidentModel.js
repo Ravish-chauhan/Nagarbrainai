@@ -16,6 +16,8 @@ const incidentSchema = new mongoose.Schema({
   reportedBy: { type: String, default: 'Anonymous' },
   verified:   { type: Boolean, default: false },
   active:     { type: Boolean, default: true },
+  imageUrl:   { type: String, default: '' },
+  aiResult:   { type: Object, default: null },
   createdAt:  { type: Date, default: Date.now },
 });
 

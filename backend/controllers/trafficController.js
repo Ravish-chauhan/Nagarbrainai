@@ -42,37 +42,41 @@ exports.getIncidents = async (req, res) => {
 
 exports.addIncident = async (req, res) => {
   try {
-    const { type, description = '', location, reportedBy = 'Anonymous' } = req.body;
+    const { type, description = '', location, reportedBy = 'Anonymous', imageUrl = '', aiResult = null } = req.body;
 
-    // ── Auto-severity from type + description keywords ──────────────────
     const text = `${type} ${description}`.toLowerCase();
-    let severity = 'Medium';
-    if (
-      type === 'Bridge Damage' || type === 'Fire' ||
-      text.includes('fatal') || text.includes('dead') || text.includes('collapse') ||
-      text.includes('major') || text.includes('severe') || text.includes('critical')
-    ) severity = 'Critical';
-    else if (
-      type === 'Accident' || type === 'Flooding' ||
-      text.includes('injur') || text.includes('block') || text.includes('flood') ||
-      text.includes('high') || text.includes('serious')
-    ) severity = 'High';
-    else if (
-      type === 'Construction' || type === 'Fallen Tree' ||
-      text.includes('slow') || text.includes('minor') || text.includes('partial')
-    ) severity = 'Low';
+    let severity = aiResult?.severity || 'Medium';
+    if (!aiResult?.severity) {
+      if (type === 'Bridge Damage' || type === 'Fire' || text.includes('fatal') || text.includes('dead') || text.includes('collapse') || text.includes('major') || text.includes('severe') || text.includes('critical')) severity = 'Critical';
+      else if (type === 'Accident' || type === 'Flooding' || text.includes('injur') || text.includes('block') || text.includes('flood') || text.includes('high') || text.includes('serious')) severity = 'High';
+      else if (type === 'Construction' || type === 'Fallen Tree' || text.includes('slow') || text.includes('minor') || text.includes('partial')) severity = 'Low';
+    }
 
     if (mongoose.connection.readyState !== 1) {
       const newIncident = {
         _id: `mem_${idCounter++}`, type, description, severity,
-        location, reportedBy, verified: false, active: true,
-        createdAt: new Date().toISOString(),
+        location, reportedBy, verified: true, active: true,
+        imageUrl, aiResult, createdAt: new Date().toISOString(),
       };
       inMemoryIncidents.push(newIncident);
       return res.status(201).json(newIncident);
     }
-    const saved = await new Incident({ type, description, severity, location, reportedBy }).save();
+    const saved = await new Incident({ type, description, severity, location, reportedBy, verified: true, imageUrl, aiResult }).save();
     res.status(201).json(saved);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
+exports.deleteIncident = async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (mongoose.connection.readyState !== 1) {
+      inMemoryIncidents = inMemoryIncidents.filter(i => i._id !== id);
+      return res.json({ message: 'Deleted' });
+    }
+    await Incident.findByIdAndDelete(id);
+    res.json({ message: 'Deleted' });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }

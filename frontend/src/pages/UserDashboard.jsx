@@ -6,7 +6,7 @@ import {
   RefreshCw, ChevronRight, Siren, BarChart3, Map, Phone, X, CheckCircle
 } from 'lucide-react';
 
-import TrafficMap          from '../components/TrafficMap';
+import { uploadToCloudinary } from '../utils/cloudinary';
 import RoutePlanner        from '../components/RoutePlanner';
 import TrafficStats        from '../components/TrafficStats';
 import DetectionCanvas     from '../components/DetectionCanvas';
@@ -90,8 +90,12 @@ const UserDashboard = () => {
     });
   }, []);
 
-  const submitIncident = async ({ type, description, location, reportedBy }) => {
-    const res = await axios.post(`${API_URI}/incidents`, { type, description, location, reportedBy });
+  const submitIncident = async ({ type, description, location, reportedBy, image, aiResult }) => {
+    let imageUrl = '';
+    try {
+      if (image) imageUrl = await uploadToCloudinary(image);
+    } catch (e) { console.warn('Cloudinary upload failed:', e.message); }
+    const res = await axios.post(`${API_URI}/incidents`, { type, description, location, reportedBy, imageUrl, aiResult });
     setIncidents(prev => [res.data, ...prev]);
     setIncidentPickLoc(null);
   };
